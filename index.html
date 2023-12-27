@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Informasi barang</title>
+  <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+  }
+
+  #sidebar {
+    background-color: #000;
+    color: #fff;
+    width: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #sidebar h3 {
+    margin-bottom: 20px;
+  }
+
+  #sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #sidebar ul li {
+    margin-bottom: 10px;
+  }
+
+  #sidebar ul li a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  #container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    overflow: auto;
+    background: url("../pemandangan-gunung-bromo-alam-indonesia.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  h2, h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  label {
+    display: block;
+    margin: 10px 0;
+    color: #333;
+  }
+
+  input, select {
+    width: 80%;
+    max-width: 300px;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 80%;
+    max-width: 300px;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  #barangTable {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+
+  #barangTable th, #barangTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+
+  #barangTable th {
+    background-color: #4caf50;
+    color: white;
+  }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h3>Menu</h3>
+    <ul>
+      <a href="tugas1.html">data barang</a>
+      <a href="tugas2.html">data transaksi</a>
+      <a href="tugas3.html">data pelanggan</a>
+    </ul>
+  </div>
+
+  <div id="container">
+    <h1>Sistem Informasi Barang</h1>
+    <h2>data barang</h2>
+    
+    
+    <label for="kodeBarang">Kode Barang:</label>
+    <input type="text" id="kodeBarang" placeholder="Kode Barang">
+
+    <label for="namaBarang">Nama Barang:</label>
+    <input type="text" id="namaBarang" placeholder="Nama Barang">
+
+    <label for="hargaBarang">Harga Barang:</label>
+    <input type="text" id="hargaBarang" placeholder="Harga Barang">
+
+    <label for="satuan">Satuan:</label>
+    <select id="satuan">
+      <option value="pcs">PCS</option>
+      <option value="kg">KG</option>
+      <option value="m">bungkus</option>
+    </select>
+
+    <br>
+
+    <button onclick="processBarang()">Proses</button>
+
+    <table id="barangTable">
+      <thead>
+        <tr>
+          <th>Kode Barang</th>
+          <th>Nama Barang</th>
+          <th>Harga Barang</th>
+          <th>Satuan</th>
+        </tr>
+      </thead>
+      <tbody id="barangBody"></tbody>
+    </table>
+  </div>
+  <script>
+    function processBarang() {
+    var kodeBarang = document.getElementById('kodeBarang').value;
+    var namaBarang = document.getElementById('namaBarang').value;
+    var hargaBarang = document.getElementById('hargaBarang').value;
+    var satuan = document.getElementById('satuan').value;
+
+    var barangTable = document.getElementById('barangTable');
+    var barangBody = document.getElementById('barangBody');
+
+    var newRow = barangBody.insertRow();
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
+
+    cell1.innerHTML = kodeBarang;
+    cell2.innerHTML = namaBarang;
+    cell3.innerHTML = hargaBarang;
+    cell4.innerHTML = satuan;
+
+    document.getElementById('kodeBarang').value = '';
+    document.getElementById('namaBarang').value = '';
+    document.getElementById('hargaBarang').value = '';
+    document.getElementById('satuan').value = '';
+  }
+  </script>
+</body>
+</html>
